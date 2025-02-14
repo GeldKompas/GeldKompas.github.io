@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <!-- Metadata voor SEO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="GeldKompas biedt persoonlijk financieel advies voor Belgen: slim beleggen, sparen, pensioenplanning en vermogensbeheer. Plan je gratis intakegesprek!">
+    <meta name="keywords"
+          content="financieel advies, beleggen, geld, pensioenplanning, sparen, investeren, vermogensbeheer, België, Vlaamse Belgen">
+    <meta name="author" content="GeldKompas Team">
+    <title>GeldKompas - Jouw gids naar financieel succes</title>
+
+    <!-- Favicon -->
+    <!--    <link rel="icon" href="https://via.placeholder.com/32" type="image/png">-->
+
+    <!-- Google Fonts en Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <style>
+        /* Algemene opmaak */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333333;
+            line-height: 1.6;
+            background-color: #F3F4F6;
+        }
+
+        /* Navigatiebalk */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #003366;
+            color: #FFFFFF;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #FFD700;
+        }
+
+        /* Hero-sectie */
+        .hero {
+            height: 55vh;
+            background: linear-gradient(rgba(0, 51, 102, 0.7), rgba(0, 51, 102, 0.7));
+            color: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            max-width: 800px;
+        }
+
+        .hero .cta-btn {
+            background: #FFD700;
+            color: #000000;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .hero .cta-btn:hover {
+            background: #E6C300;
+        }
+
+        /* Secties */
+        section {
+            padding: 60px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            margin-top: 15px;
+            color: #003366;
+            font-size: 2em;
+        }
+
+        /* Diensten */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .service-card {
+            background: #FFFFFF;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card i {
+            font-size: 2.5em;
+            color: #003366;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: #004080;
+        }
+
+        .service-card p {
+            text-align: left;
+            font-size: 0.95em;
+            color: #555555;
+        }
+
+        /* Testimonials */
+        #testimonials {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 700px;
+            margin: 0 60px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 40px 20px;
+            background-color: #FFFFFF;
+            box-sizing: border-box;
+        }
+
+        .testimonial-text {
+            font-size: 1.2em;
+            color: #333333;
+            margin-bottom: 20px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #003366;
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .carousel-btn {
+            color: rgba(0, 51, 102, 0.7);
+            border: none;
+            font-size: 2em;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.3s;
+            position: relative;
+            z-index: 2;
+            height: 1.5em;
+            width: 1.5em;
+            padding: 0.5em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel-btn:hover {
+            color: rgba(0, 51, 102, 1);
+        }
+
+        .cta-btn:hover {
+            color: rgba(0, 51, 102, 1);
+        }
+
+        @media (max-width: 768px) {
+            .carousel-container {
+                margin: 0 40px;
+            }
+
+            .testimonial-text {
+                font-size: 1em;
+            }
+
+            .carousel-btn {
+                font-size: 1.5em;
+                padding: 10px;
+            }
+        }
+
+        /* Prijzen */
+        #pricing {
+            padding: 60px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .pricing {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .price-card {
+            flex: 1 1 300px;
+            background: #FFFFFF;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid #003366;
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .price-card.highlighted {
+            border-top: 5px solid #FFD700;
+            transform: scale(1.05);
+        }
+
+        .price-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .package-title {
+            font-size: 1.5em;
+            color: #003366;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 2.2em;
+            margin: 20px 0;
+            color: #000000;
+        }
+
+        .discount-price {
+            font-size: 1.1em;
+            color: #444444;
+            margin-bottom: 15px;
+        }
+
+        .discount-tag {
+            background-color: #FFD700;
+            color: #000000;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+
+        .features {
+            text-align: left;
+            list-style: none;
+            margin: 20px 0;
+            padding-left: 0;
+        }
+
+        .features li {
+            margin: 10px 0;
+            font-size: 1em;
+        }
+
+        .sub-features {
+            list-style: none;
+            padding-left: 20px;
+            margin: 10px 0;
+            text-align: left;
+        }
+
+        .sub-features li {
+            font-size: 0.95em;
+        }
+
+        .cta-container {
+            margin-top: 20px;
+        }
+
+        .cta-btn {
+            background: #003366;
+            color: #FFFFFF;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            background: #00264D;
+        }
+
+        @media (max-width: 768px) {
+            .pricing {
+                flex-direction: column;
+            }
+        }
+
+        /* FAQ */
+        #faq {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .faq-container {
+            text-align: left;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #CCCCCC;
+            padding: 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .faq-item:hover {
+            background: #F0F0F0;
+        }
+
+        .faq-item h4 {
+            color: #003366;
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+
+        .faq-item p {
+            display: none;
+            margin-top: 5px;
+        }
+
+        .faq-item.active p {
+            display: block;
+        }
+
+        /* Contact */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 12px;
+            border: 1px solid #CCCCCC;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .contact-form button {
+            background: #003366;
+            color: #FFFFFF;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 1.1em;
+        }
+
+        .contact-form button:hover {
+            background: #00264D;
+        }
+
+        /* Footer */
+        footer {
+            background: #003366;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navigatie -->
+<nav>
+    <div class="logo">GeldKompas</div>
+    <ul>
+        <li><a href="#services">Diensten</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#pricing">Pakketten</a></li>
+        <li><a href="#contact">Plan gesprek</a></li>
+        <li><a href="#faq">FAQ</a></li>
+    </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <h1>Word financieel sterker met GeldKompas</h1>
+    <p>Persoonlijk advies voor Belgen om slim te beleggen, te sparen en je pensioen goed voor te bereiden. Geen
+        verborgen kosten, enkel resultaten.</p>
+    <button class="cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Plan je
+        gratis intakegesprek
+    </button>
+</section>
+
+<!-- Professionele Diensten Sectie -->
+<section id="services">
+    <h2 class="section-title">Onze Diensten - Uw Gids naar Financiële Stabiliteit</h2>
+    <div class="services">
+        <!-- Dienstenkaart 1: Sparen en Budgetteren -->
+        <div class="service-card">
+            <i class="fas fa-piggy-bank"></i>
+            <h3>Efficiënt Sparen en Budgetteren</h3>
+            <p>
+                Een doordacht spaarsysteem en een helder budget vormen de basis van een gezonde financiële toekomst. Wij
+                bieden inzicht en praktische begeleiding om uw financiële doelen te realiseren.
+            </p>
+            <ul style="text-align: left; margin-top: 15px; padding-left: 20px;">
+                <li>✔️ Opstellen van een overzichtelijk en realistisch budget</li>
+                <li>✔️ Strategieën voor zowel kortetermijn- als langetermijnsparen</li>
+                <li>✔️ Advies over spaarproducten met maximale rendementen</li>
+                <li>✔️ Inzicht in bestedingspatronen en kostenoptimalisatie</li>
+            </ul>
+            <p style="margin-top: 15px;">
+                <strong>Resultaat:</strong> een stabiele financiële basis met concrete doelen en meetbare vooruitgang.
+            </p>
+        </div>
+
+        <!-- Dienstenkaart 2: Beleggen -->
+        <div class="service-card">
+            <i class="fas fa-chart-line"></i>
+            <h3>Beleggingsadvies zonder Overbodige Kosten</h3>
+            <p>
+                Beleggen hoeft niet complex of duur te zijn. Wij helpen u met een gedegen strategie om uw kapitaal
+                efficiënt te laten groeien, zonder verborgen kosten.
+            </p>
+            <ul style="text-align: left; margin-top: 15px; padding-left: 20px;">
+                <li>✔️ Introductie tot beleggen in ETF's, indexfondsen en aandelen</li>
+                <li>✔️ Risicoanalyse en samenstelling van een gediversifieerde portefeuille</li>
+                <li>✔️ Inzicht in kostenstructuren en het vermijden van onnodige bankkosten</li>
+                <li>✔️ Opstellen van een lange- en kortetermijn beleggingsstrategie</li>
+            </ul>
+            <p style="margin-top: 15px;">
+                <strong>Resultaat:</strong> een beleggingsportefeuille afgestemd op uw financiële situatie en
+                toekomstplannen.
+            </p>
+        </div>
+
+        <!-- Dienstenkaart 3: Pensioenplanning -->
+        <div class="service-card">
+            <i class="fas fa-calendar-alt"></i>
+            <h3>Pensioenplanning en Langetermijnstrategie</h3>
+            <p>
+                Het opbouwen van een solide pensioen vereist een goed doordacht plan. Wij bieden begeleiding om uw
+                toekomstige financiële zekerheid te waarborgen.
+            </p>
+            <ul style="text-align: left; margin-top: 15px; padding-left: 20px;">
+                <li>✔️ Simulaties van uw toekomstige pensioeninkomen</li>
+                <li>✔️ Advies over pensioenspaarproducten en lange-termijnplannen</li>
+                <li>✔️ Optimalisatie van uw spaarinspanningen voor belastingvoordelen</li>
+                <li>✔️ Strategieën om uw levensstandaard na pensionering te behouden</li>
+            </ul>
+            <p style="margin-top: 15px;">
+                <strong>Resultaat:</strong> een pensioenstrategie waarmee u met vertrouwen naar de toekomst kijkt.
+            </p>
+        </div>
+
+        <!-- Dienstenkaart 4: Vermogensbeheer -->
+        <div class="service-card">
+            <i class="fas fa-coins"></i>
+            <h3>Vermogensbeheer en Inzicht in Uw Financiën</h3>
+            <p>
+                Financiële rust begint met een helder inzicht in uw totale vermogen. Wij helpen u om grip te krijgen op
+                uw financiële positie en groeikansen te identificeren.
+            </p>
+            <ul style="text-align: left; margin-top: 15px; padding-left: 20px;">
+                <li>✔️ Overzicht van activa, passiva en investeringen</li>
+                <li>✔️ Excel-templates voor eenvoudige opvolging en beheer</li>
+                <li>✔️ Analyse van vermogensgroei en rendementen</li>
+                <li>✔️ Praktische strategieën voor een duurzame vermogensopbouw</li>
+            </ul>
+            <p style="margin-top: 15px;">
+                <strong>Resultaat:</strong> een duidelijk beeld van uw financiële situatie met concrete
+                groeistrategieën.
+            </p>
+        </div>
+
+        <!-- Dienstenkaart 5: Financiële Planning bij Levensgebeurtenissen -->
+        <div class="service-card">
+            <i class="fas fa-user-friends"></i>
+            <h3>Financiële Planning voor Belangrijke Levensmomenten</h3>
+            <p>
+                Uw leven verandert, en uw financiële strategie zou mee moeten evolueren. Wij ondersteunen u bij
+                belangrijke levensgebeurtenissen met deskundig advies.
+            </p>
+            <ul style="text-align: left; margin-top: 15px; padding-left: 20px;">
+                <li>✔️ Starten met werken: een solide financiële basis opbouwen</li>
+                <li>✔️ Woning kopen: financieel voorbereiden en plannen</li>
+                <li>✔️ Gezin uitbreiden: budget en spaarplan aanpassen</li>
+                <li>✔️ Pensioenleeftijd bereiken: financiële balans opmaken</li>
+            </ul>
+            <p style="margin-top: 15px;">
+                <strong>Resultaat:</strong> een levenslange financiële strategie, aangepast aan uw situatie.
+            </p>
+        </div>
+    </div>
+
+    <!-- Call-to-Action -->
+    <div style="text-align: center; margin-top: 40px;">
+        <h3 style="color:#003366;">Klaar voor een stevig financieel fundament?</h3>
+        <p style="margin-top: 10px; font-size: 1.1em;">
+            Plan vandaag nog uw gratis intakegesprek en ontdek wat wij voor uw financiële toekomst kunnen betekenen.
+        </p>
+        <button class="cta-btn"
+                style="margin-top: 20px; padding: 15px 30px; border:none; border-radius:5px; background-color:#003366; color:#FFFFFF; cursor:pointer;"
+                onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+            Plan uw gratis intakegesprek
+        </button>
+    </div>
+</section>
+
+<!-- Testimonials Sectie -->
+<section id="testimonials">
+    <h2 class="section-title">Wat Onze Klanten Zeggen</h2>
+    <div class="carousel-wrapper">
+        <!-- Knoppen buiten de carrousel -->
+        <button class="carousel-btn prev-btn">&#10094;</button>
+
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">"Dankzij GeldKompas heb ik eindelijk inzicht in mijn beleggingen. Hun
+                        duidelijke uitleg en efficiënte aanpak gaven me het vertrouwen om te starten met ETF's."</p>
+                    <div class="testimonial-author">- Lisa D.</div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">"Ik wist niet waar te beginnen met mijn pensioenplanning. Het team van
+                        GeldKompas begeleidde me stap voor stap. Nu weet ik precies wat ik moet doen."</p>
+                    <div class="testimonial-author">- Tom V.</div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">"Als jongere zonder financiële kennis vond ik beleggen spannend. Met hun
+                        begeleiding en templates voel ik me nu zekerder over mijn financiële toekomst."</p>
+                    <div class="testimonial-author">- Sarah K.</div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">"Mijn spaargeld stond jarenlang op een rekening zonder rendement.
+                        GeldKompas hielp me met een plan om het beter te benutten."</p>
+                    <div class="testimonial-author">- Jan M.</div>
+                </div>
+
+                <!-- Testimonial 5 -->
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">"De maandelijkse sessies zijn enorm waardevol. Ik krijg altijd bruikbaar
+                        advies en de Excel-templates maken alles overzichtelijk."</p>
+                    <div class="testimonial-author">- Evelien R.</div>
+                </div>
+
+                <!-- Testimonial 6 -->
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">"Ik had altijd schrik om te beleggen, maar dankzij de heldere uitleg van
+                        GeldKompas weet ik hoe ik zonder grote risico's kan starten."</p>
+                    <div class="testimonial-author">- Peter L.</div>
+                </div>
+
+                <!-- Testimonial 7 -->
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">"Het team is professioneel, geduldig en duidelijk. Geen vakjargon,
+                        gewoon concreet en toepasbaar advies. Aanrader!"</p>
+                    <div class="testimonial-author">- Sofie B.</div>
+                </div>
+
+                <!-- Testimonial 8 -->
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">"Mijn pensioenplanning stond stil. Met hun begeleiding heb ik nu een
+                        concreet plan dat haalbaar en duidelijk is."</p>
+                    <div class="testimonial-author">- Marc T.</div>
+                </div>
+
+                <!-- Testimonial 9 -->
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">"De persoonlijke aanpak is wat mij het meest aansprak. Geen
+                        standaardadvies, maar een plan op maat van mijn situatie."</p>
+                    <div class="testimonial-author">- Karen S.</div>
+                </div>
+
+                <!-- Testimonial 10 -->
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">"Ik volgde hun tips voor budgetbeheer en bespaarde al honderden euro's
+                        op onnodige uitgaven. Een investering die zichzelf terugverdient!"</p>
+                    <div class="testimonial-author">- David P.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Knoppen buiten de carrousel -->
+        <button class="carousel-btn next-btn">&#10095;</button>
+    </div>
+
+</section>
+
+
+<!-- Pakketten Sectie -->
+<section id="pricing">
+    <h2 class="section-title">Onze Pakketten - Financieel Advies op Maat</h2>
+    <div class="pricing">
+
+        <!-- Silver -->
+        <div class="price-card">
+            <h3 class="package-title">💼 Silver</h3>
+            <div class="price">€49/maand</div>
+            <ul class="features">
+                <li>🕒 30 min 1-op-1 gesprek met financieel expert</li>
+                <li>🔄 Niet-gebruikte sessies stapelen automatisch op</li>
+                <li>📊 Inzicht in je inkomsten, uitgaven en spaardoelen</li>
+            </ul>
+            <div class="cta-container">
+                <a href="#contact" class="cta-btn">Plan intakegesprek</a>
+            </div>
+        </div>
+
+        <!-- Gold -->
+        <div class="price-card highlighted">
+            <h3 class="package-title">📈 Gold</h3>
+            <div class="price">€99/maand</div>
+            <ul class="features">
+                <li>🕒 60 min 1-op-1 gesprek met financieel expert</li>
+                <li>🔄 Niet-gebruikte sessies schuiven automatisch door</li>
+                <li>📈 Toegang tot alle templates:</li>
+                <ul class="sub-features">
+                    <li>✔️ Budgetbeheer en spaarplannen</li>
+                    <li>✔️ Portfolio-overzicht voor beleggingen</li>
+                    <li>✔️ Pensioenplanner en vermogensmonitor</li>
+                </ul>
+                <li>✉️ Beperkte e-mailsupport</li>
+            </ul>
+            <div class="cta-container">
+                <a href="#contact" class="cta-btn">Plan intakegesprek</a>
+            </div>
+        </div>
+
+        <!-- Diamond -->
+        <div class="price-card">
+            <h3 class="package-title">💎 Diamond</h3>
+            <div class="price">€199/maand</div>
+            <ul class="features">
+                <li>🕒 120 min 1-op-1 gesprek met financieel expert</li>
+                <li>🔄 Niet-gebruikte sessies schuiven automatisch door</li>
+                <li>📊 Volledige toegang tot alle templates</li>
+                <li>🧾 Persoonlijke analyse & rapportage per kwartaal</li>
+                <li>✉️ Onbeperkte e-mailsupport</li>
+            </ul>
+            <div class="cta-container">
+                <a href="#contact" class="cta-btn">Plan intakegesprek</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Contact -->
+<section id="contact">
+    <h2 class="section-title">Plan je Gratis Intakegesprek</h2>
+    <!--    <div class="contact-form">-->
+    <!--        <input type="text" placeholder="Naam" required>-->
+    <!--        <input type="email" placeholder="E-mail" required>-->
+    <!--        <input type="tel" placeholder="Telefoonnummer" required>-->
+    <!--        <textarea placeholder="Jouw vraag (optioneel)" rows="5"></textarea>-->
+    <!--        <button type="submit">Verstuur</button>-->
+    <!--    </div>-->
+<!--    <div style="height: 300px; display: flex; justify-content: center; align-items: center">todo https://calendly.com/ widget</div>-->
+    <!-- Calendly inline widget begin -->
+    <div class="calendly-inline-widget" data-url="https://calendly.com/contact-geldkompas/intakegesprek?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=003366" style="min-width:320px;height:700px;"></div>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    <!-- Calendly inline widget end -->
+</section>
+
+
+
+<!-- FAQ Sectie -->
+<section id="faq">
+    <h2 class="section-title">Veelgestelde Vragen</h2>
+    <div class="faq-container">
+
+        <!-- Hoe werkt het? -->
+        <div class="faq-item">
+            <h4>Hoe werkt GeldKompas precies?</h4>
+            <p>
+                Wij maken financieel advies eenvoudig en toegankelijk. Zo verloopt het proces:<br><br>
+                1. <strong>Gratis intakegesprek (20 min)</strong>: We leren u en uw financiële situatie kennen.<br>
+                2. <strong>Pakketkeuze</strong>: We stellen samen vast welk pakket het beste past.<br>
+                3. <strong>Maandelijkse gesprekken</strong>: U ontvangt elke maand een persoonlijk 1-op-1 gesprek.<br>
+                4. <strong>Praktische tips en opvolging</strong>: Geen theorie, maar concrete stappen om uw geld
+                optimaal te beheren.<br>
+                5. <strong>Langetermijnbegeleiding</strong>: Uw situatie verandert, wij denken mee.<br>
+            </p>
+        </div>
+
+        <!-- Wat doen we en waarom nodig -->
+        <div class="faq-item">
+            <h4>Wat doet GeldKompas precies?</h4>
+            <p>
+                Wij helpen Belgen met het verstandig beheren van hun geld. Dit omvat sparen, beleggen en
+                pensioenplanning. We bieden praktische begeleiding en duidelijke adviezen op maat van uw situatie.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h4>Waarom zou ik betalen voor financieel advies?</h4>
+            <p>
+                Banken verkopen vaak producten die hen commissie opleveren, niet per se wat het best voor u is. Wij
+                werken 100% onafhankelijk en zoeken naar oplossingen die uw rendement optimaliseren.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h4>Voor wie is deze dienst bedoeld?</h4>
+            <p>GeldKompas richt zich op iedereen die zijn geld verstandig wil beheren, van starters tot gepensioneerden.
+                Wij werken niet met zelfstandigen of ondernemers – onze focus ligt op gezinnen en particulieren.</p>
+        </div>
+
+
+        <div class="faq-item">
+            <h4>Welke voordelen levert dit advies mij op?</h4>
+            <p>
+                - <strong>Besparen op kosten</strong>: We tonen hoe u minder betaalt aan onnodige bankkosten.<br>
+                - <strong>Beter rendement</strong>: Door slimme keuzes kan uw geld sneller groeien.<br>
+                - <strong>Rust en overzicht</strong>: Geen financiële chaos meer, maar een duidelijk plan.<br>
+            </p>
+        </div>
+
+        <!-- Waarom geen pensioensparen bij bank -->
+        <div class="faq-item">
+            <h4>Waarom is pensioensparen via een bank vaak niet optimaal?</h4>
+            <p>
+                Pensioensparen is belangrijk, maar banken rekenen vaak hoge beheerskosten die uw rendement aantasten.
+                Dit komt doordat banken:<br><br>
+                1. <strong>Hoge kosten aanrekenen</strong>: Beheerskosten kunnen tot 2% per jaar oplopen.<br>
+                2. <strong>Beperkte fondskeuze</strong>: Vaak bent u beperkt tot hun eigen producten.<br>
+                3. <strong>Geen persoonlijke begeleiding</strong>: Uw situatie verandert, maar hun advies niet.<br><br>
+                Wij helpen u pensioensparen optimaliseren met kostenefficiënte producten en een strategie die past bij
+                uw doelen.
+            </p>
+        </div>
+
+        <!-- Adviesgesprekken -->
+        <div class="faq-item">
+            <h4>Hoe verlopen de adviesgesprekken?</h4>
+            <p>
+                Onze gesprekken gebeuren online via videobellen of telefonisch – wat voor u het makkelijkste is. U plant
+                uw sessie eenvoudig in via onze boekingspagina.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h4>Wat gebeurt er met niet-gebruikte sessies?</h4>
+            <p>Niet-gebruikte sessies schuiven automatisch door naar de volgende maand. Zo verliest u nooit uw
+                adviesminuten.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>Kan ik de sessie opnemen?</h4>
+            <p>
+                Ja, u kunt het videogesprek opnemen, zodat u het later nog eens rustig kan terugkijken.
+            </p>
+        </div>
+
+        <!-- SEO-vragen -->
+        <div class="faq-item">
+            <h4>Hoe kan ik starten met beleggen?</h4>
+            <p>
+                Door te beginnen met gespreide en kostenefficiënte beleggingsproducten zoals ETF's. Wij begeleiden u bij
+                elke stap.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h4>Hoe weet ik of ik genoeg spaar voor mijn pensioen?</h4>
+            <p>
+                We maken samen een simulatie die laat zien hoeveel u nodig heeft en hoeveel u daarvoor moet sparen.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h4>Wat is de 50/30/20-regel en moet ik die volgen?</h4>
+            <p>
+                Dit is een eenvoudige budgetregel die inkomsten verdeelt: 50% voor vaste lasten, 30% voor plezier, 20%
+                voor sparen en investeren. Wij kijken samen of deze aanpak bij uw situatie past.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h4>Wat is het verschil tussen actief en passief beleggen?</h4>
+            <p>
+                Actief beleggen betekent dat u probeert de markt te verslaan, terwijl passief beleggen de markt volgt.
+                Wij leggen beide opties duidelijk uit en kijken samen wat het best bij uw doelen past.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h4>Hoe wordt mijn financiële informatie beschermd?</h4>
+            <p>Wij hanteren strikte GDPR-richtlijnen. Uw gegevens worden niet gedeeld met derden en worden enkel
+                gebruikt voor uw persoonlijke begeleiding.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>Kan ik later van pakket wisselen?</h4>
+            <p>Ja, u kunt op elk moment upgraden naar een hoger pakket. Downgraden is mogelijk na afloop van uw huidige
+                maand.</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Footer -->
+<footer>
+    &copy; 2025 GeldKompas | Financieel advies voor Belgen
+</footer>
+
+<!-- JavaScript -->
+<script>
+  // FAQ-toggle functionaliteit
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.toggle('active');
+    });
+  });
+
+  // JavaScript voor Carrousel
+  const track = document.querySelector('.carousel-track');
+  const slides = document.querySelectorAll('.testimonial-slide');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+
+  function showSlide(index) {
+    if (index < 0) {
+      index = totalSlides - 1;
+    } else if (index >= totalSlides) {
+      index = 0;
+    }
+    currentIndex = index;
+    const translateValue = -currentIndex * 100 + '%';
+    track.style.transform = `translateX(${translateValue})`;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    showSlide(currentIndex - 1);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    showSlide(currentIndex + 1);
+  });
+
+  // Automatische carrousel elke 5 seconden
+  setInterval(() => {
+    showSlide(currentIndex + 1);
+  }, 10000);
+</script>
+
+</body>
+</html>
